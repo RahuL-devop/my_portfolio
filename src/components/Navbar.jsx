@@ -157,7 +157,7 @@ const Navbar = () => {
             )}
 
             {!hidden && (
-              <div className="navbar-menu-smallDevices block md:flex md:hidden">
+              <div className="navbar-menu-smallDevices block md:hidden">
                 <MagneticEffect>
                   <div className="relative">
                     <a
