@@ -1,19 +1,17 @@
 import React, { useState } from "react";
-import MagneticEffect from "../Partials/MagneticEffect";
+import MagneticEffect from "../Animations/MagneticEffect";
 import {
   AnimatePresence,
   motion,
   useMotionValueEvent,
   useScroll,
 } from "framer-motion";
-import AnimatedHam from "../Partials/AnimatedHam";
+import AnimatedHam from "../Animations/AnimatedHam";
+import Dot_Animation from "../Animations/Dot_Animation";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [hover, setHover] = useState(false);
-  const [ishover, setIsHover] = useState(false);
-  const [hashover, setHasHover] = useState(false);
   const [hamburgerVisible, setHamburgerVisible] = useState(false);
   const [hidden, setHidden] = useState(false);
 
@@ -29,50 +27,10 @@ const Navbar = () => {
     }
   });
 
-  const handleHover = () => {
-    setHover((prev) => !prev);
-  };
-  const handleSecondHover = () => {
-    setIsHover((prev) => !prev);
-  };
-  const handleThirdHover = () => {
-    setHasHover((prev) => !prev);
-  };
+  const [hoveredElement, setHoveredElement] = useState(null);
 
-  const [elemHover1, setElemhover1] = useState(false);
-  const [elemHover2, setElemhover2] = useState(false);
-  const [elemHover3, setElemhover3] = useState(false);
-  const [elemHover4, setElemhover4] = useState(false);
-
-  const handlelemHover1 = () => {
-    setElemhover1((prev) => !prev);
-  };
-
-  const handlelemHover2 = () => {
-    setElemhover2((prev) => !prev);
-  };
-  const handlelemHover3 = () => {
-    setElemhover3((prev) => !prev);
-  };
-  const handlelemHover4 = () => {
-    setElemhover4((prev) => !prev);
-  };
-
-  const NavParent = {
-    open: { x: "20%" },
-    inView: { x: 0 },
-    exit: { x: "5%" },
-  };
-
-  const NavChild = {
-    open: { x: "20%" },
-    inView: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
+  const handleHover = (elementName) => {
+    setHoveredElement(elementName);
   };
 
   return (
@@ -99,58 +57,43 @@ const Navbar = () => {
                 <MagneticEffect>
                   <div className="relative">
                     <a
-                      onMouseEnter={handleHover}
-                      onMouseLeave={handleHover}
+                      onMouseEnter={() => handleHover("Work")}
+                      onMouseLeave={() => handleHover(null)}
                       href="#Work"
                       className=" p-[12px] text-[1.2vw] 
                 "
                     >
                       Work
                     </a>
-                    <motion.span
-                      initial={{ scale: 0 }}
-                      animate={{ scale: hover ? 1 : 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute -bottom-3 left-3 inline-block h-2 w-2 rounded-full bg-white "
-                    ></motion.span>
+                    <Dot_Animation isHovered={hoveredElement === "Work"} />
                   </div>
                 </MagneticEffect>
                 <MagneticEffect>
                   <div className="relative">
                     <a
-                      onMouseEnter={handleSecondHover}
-                      onMouseLeave={handleSecondHover}
+                      onMouseEnter={() => handleHover("About")}
+                      onMouseLeave={() => handleHover(null)}
                       href="#About"
                       className="inline-block text-[1.2vw] tracking-tighter 
                 "
                     >
                       About
                     </a>
-                    <motion.span
-                      initial={{ scale: 0 }}
-                      animate={{ scale: ishover ? 1 : 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute -bottom-3 left-3 inline-block h-2 w-2 rounded-full bg-white "
-                    ></motion.span>
+                    <Dot_Animation isHovered={hoveredElement === "About"} />
                   </div>
                 </MagneticEffect>
                 <MagneticEffect>
                   <div className="relative">
                     <a
-                      onMouseEnter={handleThirdHover}
-                      onMouseLeave={handleThirdHover}
+                      onMouseEnter={() => handleHover("Contact")}
+                      onMouseLeave={() => handleHover(null)}
                       href="#Contact"
                       className="inline-block text-[1.2vw] tracking-tighter 
                 "
                     >
                       Contact
                     </a>
-                    <motion.span
-                      initial={{ scale: 0 }}
-                      animate={{ scale: hashover ? 1 : 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute -bottom-3 left-3 inline-block h-2 w-2 rounded-full bg-white "
-                    ></motion.span>
+                    <Dot_Animation isHovered={hoveredElement === "Contact"} />
                   </div>
                 </MagneticEffect>
               </div>
@@ -161,11 +104,8 @@ const Navbar = () => {
                 <MagneticEffect>
                   <div className="relative">
                     <a
-                      onMouseEnter={handleHover}
-                      onMouseLeave={handleHover}
                       href="#Work"
-                      className="inline-block text-[5.2vw]  tracking-tighter
-                "
+                      className="inline-block text-[5.2vw]  tracking-tighter"
                     >
                       Menu
                     </a>
@@ -202,24 +142,17 @@ const Navbar = () => {
                 <div className="nav-items-container">
                   <p className="mb-5 text-xs text-zinc-500">NAVIGATION</p>
                   <span className="inline-block h-[0.6px] w-full bg-zinc-700"></span>
-                  <motion.div
-                    initial="open"
-                    whileInView="inView"
-                    exit="exit"
-                    variants={NavParent}
-                    className="nav-items mt-8 flex flex-col gap-4"
-                  >
+                  <motion.div className="nav-items mt-8 flex flex-col gap-4">
                     <div
-                      onMouseEnter={handlelemHover1}
-                      onMouseLeave={handlelemHover1}
+                      onMouseEnter={() => handleHover("Home")}
+                      onMouseLeave={() => handleHover(null)}
                       className="elem relative h-[3.4vw] overflow-hidden"
                     >
                       <motion.a
                         href="#"
-                        className="one block h-[3.4vw]  text-[3.5vw] leading-none text-white"
-                        variants={NavChild}
+                        className="one block h-[3.4vw] text-[3.5vw] leading-none text-white"
                         initial={{ y: 0 }}
-                        animate={{ y: elemHover1 ? "-100%" : 0 }}
+                        animate={{ y: hoveredElement === "Home" ? "-100%" : 0 }}
                         transition={{
                           duration: 0.5,
                           ease: [0.175, 0.885, 0.32, 1.275],
@@ -230,9 +163,8 @@ const Navbar = () => {
                       <motion.a
                         href="#"
                         className="two block -translate-y-10 text-[3.5vw] leading-none text-white "
-                        variants={NavChild}
                         initial={{ y: 0 }}
-                        animate={{ y: elemHover1 ? "-100%" : 0 }}
+                        animate={{ y: hoveredElement === "Home" ? "-100%" : 0 }}
                         transition={{
                           duration: 0.5,
                           ease: [0.175, 0.885, 0.32, 1.275],
@@ -243,16 +175,15 @@ const Navbar = () => {
                     </div>
 
                     <div
-                      onMouseEnter={handlelemHover2}
-                      onMouseLeave={handlelemHover2}
+                      onMouseEnter={() => handleHover("Work")}
+                      onMouseLeave={() => handleHover(null)}
                       className="elem h-[3.4vw] overflow-hidden"
                     >
                       <motion.a
                         href="#"
                         className="one block h-[3.4vw]  text-[3.5vw] leading-none text-white"
-                        variants={NavChild}
                         initial={{ y: 0 }}
-                        animate={{ y: elemHover2 ? "-100%" : 0 }}
+                        animate={{ y: hoveredElement === "Work" ? "-100%" : 0 }}
                         transition={{
                           duration: 0.5,
                           ease: [0.175, 0.885, 0.32, 1.275],
@@ -263,9 +194,8 @@ const Navbar = () => {
                       <motion.a
                         href="#"
                         className="two block -translate-y-10 text-[3.5vw] leading-none text-white "
-                        variants={NavChild}
                         initial={{ y: 0 }}
-                        animate={{ y: elemHover2 ? "-100%" : 0 }}
+                        animate={{ y: hoveredElement === "Work" ? "-100%" : 0 }}
                         transition={{
                           duration: 0.5,
                           ease: [0.175, 0.885, 0.32, 1.275],
@@ -276,49 +206,52 @@ const Navbar = () => {
                     </div>
 
                     <div
-                      onMouseEnter={handlelemHover3}
-                      onMouseLeave={handlelemHover3}
+                      onMouseEnter={() => handleHover("About")}
+                      onMouseLeave={() => handleHover(null)}
                       className="elem h-[3.4vw] overflow-hidden"
                     >
                       <motion.a
                         href="#"
                         className="one block h-[3.4vw]  text-[3.5vw] leading-none text-white"
-                        variants={NavChild}
                         initial={{ y: 0 }}
-                        animate={{ y: elemHover3 ? "-100%" : 0 }}
+                        animate={{
+                          y: hoveredElement === "About" ? "-100%" : 0,
+                        }}
                         transition={{
                           duration: 0.5,
                           ease: [0.175, 0.885, 0.32, 1.275],
                         }}
                       >
-                        work
+                        About
                       </motion.a>
                       <motion.a
                         href="#"
                         className="two block -translate-y-10 text-[3.5vw] leading-none text-white "
-                        variants={NavChild}
                         initial={{ y: 0 }}
-                        animate={{ y: elemHover3 ? "-100%" : 0 }}
+                        animate={{
+                          y: hoveredElement === "About" ? "-100%" : 0,
+                        }}
                         transition={{
                           duration: 0.5,
                           ease: [0.175, 0.885, 0.32, 1.275],
                         }}
                       >
-                        work
+                        About
                       </motion.a>
                     </div>
 
                     <div
-                      onMouseEnter={handlelemHover4}
-                      onMouseLeave={handlelemHover4}
+                      onMouseEnter={() => handleHover("Contact")}
+                      onMouseLeave={() => handleHover(null)}
                       className="elem h-[3.4vw] overflow-hidden"
                     >
                       <motion.a
                         href="#"
                         className="one block h-[3.4vw]  text-[3.5vw] leading-none text-white"
-                        variants={NavChild}
                         initial={{ y: 0 }}
-                        animate={{ y: elemHover4 ? "-100%" : 0 }}
+                        animate={{
+                          y: hoveredElement === "Contact" ? "-100%" : 0,
+                        }}
                         transition={{
                           duration: 0.5,
                           ease: [0.175, 0.885, 0.32, 1.275],
@@ -329,9 +262,10 @@ const Navbar = () => {
                       <motion.a
                         href="#"
                         className="two block -translate-y-10 text-[3.5vw] leading-none text-white "
-                        variants={NavChild}
                         initial={{ y: 0 }}
-                        animate={{ y: elemHover4 ? "-100%" : 0 }}
+                        animate={{
+                          y: hoveredElement === "Contact" ? "-100%" : 0,
+                        }}
                         transition={{
                           duration: 0.5,
                           ease: [0.175, 0.885, 0.32, 1.275],
