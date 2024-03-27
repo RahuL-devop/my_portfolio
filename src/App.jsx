@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Cursor from "./Partials/Cursor";
+import Cursor from "./Animations/Cursor";
 import LocomotiveScroll from "locomotive-scroll";
 
 const App = () => {

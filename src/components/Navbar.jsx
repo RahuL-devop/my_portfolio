@@ -8,6 +8,7 @@ import {
 } from "framer-motion";
 import AnimatedHam from "../Animations/AnimatedHam";
 import Dot_Animation from "../Animations/Dot_Animation";
+import Double_hover from "../Animations/Double_hover";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -143,7 +144,7 @@ const Navbar = () => {
                   <p className="mb-5 text-xs text-zinc-500">NAVIGATION</p>
                   <span className="inline-block h-[0.6px] w-full bg-zinc-700"></span>
                   <motion.div className="nav-items mt-8 flex flex-col gap-4">
-                    <div
+                    {/* <div
                       onMouseEnter={() => handleHover("Home")}
                       onMouseLeave={() => handleHover(null)}
                       className="elem relative h-[3.4vw] overflow-hidden"
@@ -172,116 +173,56 @@ const Navbar = () => {
                       >
                         Home
                       </motion.a>
-                    </div>
+                    </div> */}
+                    <Double_hover
+                      text="Home"
+                      hoveredElement={hoveredElement}
+                      handleHover={handleHover}
+                    />
+                    <Double_hover
+                      text="Work"
+                      hoveredElement={hoveredElement}
+                      handleHover={handleHover}
+                    />
+                    <Double_hover
+                      text="Contact"
+                      hoveredElement={hoveredElement}
+                      handleHover={handleHover}
+                    />
 
-                    <div
-                      onMouseEnter={() => handleHover("Work")}
-                      onMouseLeave={() => handleHover(null)}
-                      className="elem h-[3.4vw] overflow-hidden"
-                    >
-                      <motion.a
-                        href="#"
-                        className="one block h-[3.4vw]  text-[3.5vw] leading-none text-white"
-                        initial={{ y: 0 }}
-                        animate={{ y: hoveredElement === "Work" ? "-100%" : 0 }}
-                        transition={{
-                          duration: 0.5,
-                          ease: [0.175, 0.885, 0.32, 1.275],
-                        }}
-                      >
-                        Work
-                      </motion.a>
-                      <motion.a
-                        href="#"
-                        className="two block -translate-y-10 text-[3.5vw] leading-none text-white "
-                        initial={{ y: 0 }}
-                        animate={{ y: hoveredElement === "Work" ? "-100%" : 0 }}
-                        transition={{
-                          duration: 0.5,
-                          ease: [0.175, 0.885, 0.32, 1.275],
-                        }}
-                      >
-                        Work
-                      </motion.a>
-                    </div>
-
-                    <div
-                      onMouseEnter={() => handleHover("About")}
-                      onMouseLeave={() => handleHover(null)}
-                      className="elem h-[3.4vw] overflow-hidden"
-                    >
-                      <motion.a
-                        href="#"
-                        className="one block h-[3.4vw]  text-[3.5vw] leading-none text-white"
-                        initial={{ y: 0 }}
-                        animate={{
-                          y: hoveredElement === "About" ? "-100%" : 0,
-                        }}
-                        transition={{
-                          duration: 0.5,
-                          ease: [0.175, 0.885, 0.32, 1.275],
-                        }}
-                      >
-                        About
-                      </motion.a>
-                      <motion.a
-                        href="#"
-                        className="two block -translate-y-10 text-[3.5vw] leading-none text-white "
-                        initial={{ y: 0 }}
-                        animate={{
-                          y: hoveredElement === "About" ? "-100%" : 0,
-                        }}
-                        transition={{
-                          duration: 0.5,
-                          ease: [0.175, 0.885, 0.32, 1.275],
-                        }}
-                      >
-                        About
-                      </motion.a>
-                    </div>
-
-                    <div
-                      onMouseEnter={() => handleHover("Contact")}
-                      onMouseLeave={() => handleHover(null)}
-                      className="elem h-[3.4vw] overflow-hidden"
-                    >
-                      <motion.a
-                        href="#"
-                        className="one block h-[3.4vw]  text-[3.5vw] leading-none text-white"
-                        initial={{ y: 0 }}
-                        animate={{
-                          y: hoveredElement === "Contact" ? "-100%" : 0,
-                        }}
-                        transition={{
-                          duration: 0.5,
-                          ease: [0.175, 0.885, 0.32, 1.275],
-                        }}
-                      >
-                        Contact
-                      </motion.a>
-                      <motion.a
-                        href="#"
-                        className="two block -translate-y-10 text-[3.5vw] leading-none text-white "
-                        initial={{ y: 0 }}
-                        animate={{
-                          y: hoveredElement === "Contact" ? "-100%" : 0,
-                        }}
-                        transition={{
-                          duration: 0.5,
-                          ease: [0.175, 0.885, 0.32, 1.275],
-                        }}
-                      >
-                        Contact
-                      </motion.a>
-                    </div>
+                    <Double_hover
+                      text="About"
+                      hoveredElement={hoveredElement}
+                      handleHover={handleHover}
+                    />
                   </motion.div>
                   <div className="nav-socials-contaier mt-36 cursor-pointer">
                     <p className="text-xs uppercase text-zinc-500">socials</p>
                     <div className="nav-socials mt-4 flex gap-5">
-                      <p className="text-sm text-zinc-200 ">Instagram</p>
-                      <p className="text-sm text-zinc-200 ">Facebook</p>
-                      <p className="text-sm text-zinc-200 ">LinkedIn</p>
-                      <p className="text-sm text-zinc-200 ">Github</p>
+                      <Double_hover
+                        text="Instaram"
+                        textSize="sm"
+                        hoveredElement={hoveredElement}
+                        handleHover={handleHover}
+                      />
+                      <Double_hover
+                        text="Facebook"
+                        textSize="sm"
+                        hoveredElement={hoveredElement}
+                        handleHover={handleHover}
+                      />
+                      <Double_hover
+                        text="LinkedIn"
+                        textSize="sm"
+                        hoveredElement={hoveredElement}
+                        handleHover={handleHover}
+                      />{" "}
+                      <Double_hover
+                        text="Github"
+                        textSize="sm"
+                        hoveredElement={hoveredElement}
+                        handleHover={handleHover}
+                      />
                     </div>
                   </div>
                 </div>
