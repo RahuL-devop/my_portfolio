@@ -6,11 +6,11 @@ const Double_hover = ({ text, hoveredElement, handleHover, textSize }) => {
     <div
       onMouseEnter={() => handleHover(text)}
       onMouseLeave={() => handleHover(null)}
-      className="elem relative h-[3.4vw] overflow-hidden"
+      className="elem relative h-[11.4vw] overflow-hidden md:h-[3.4vw]"
     >
       <motion.a
         href="#"
-        className={`one block h-[3.4vw]  ${textSize ? `text-${textSize}` : "text-[3.5vw"}  text-[3.5vw] leading-none text-white`}
+        className={`one block ${textSize ? `text-${textSize}` : "text-[11.5vw] md:text-[3.5vw] "} text-[3.5vw] leading-none text-white`}
         initial={{ y: 0 }}
         animate={{ y: hoveredElement === text ? "-100%" : 0 }}
         transition={{
@@ -22,7 +22,7 @@ const Double_hover = ({ text, hoveredElement, handleHover, textSize }) => {
       </motion.a>
       <motion.a
         href="#"
-        className={`two block h-[3.4vw]  ${textSize ? `text-${textSize}` : "text-[3.5vw"}  text-[3.5vw] leading-none text-white`}
+        className={`two block ${textSize ? `text-${textSize}` : "text-[3.5vw"}  text-[3.5vw] leading-none text-white`}
         initial={{ y: 0 }}
         animate={{ y: hoveredElement === text ? "-100%" : 0 }}
         transition={{

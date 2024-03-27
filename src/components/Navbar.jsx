@@ -137,43 +137,13 @@ const Navbar = () => {
               animate={{ x: "0%" }}
               exit={{ x: "100%" }}
               transition={{ ease: [0.87, 0, 0.13, 1], duration: 0.8 }}
-              className="menu_smallDevices fixed right-0 top-0 h-screen w-[35vw] bg-[#1C1D20]"
+              className="menu_smallDevices fixed right-0 top-0 h-screen w-full bg-[#1C1D20] md:w-[35vw]"
             >
               <div className="Nav-container_mobile px-[6vw] py-[6vw]">
                 <div className="nav-items-container">
                   <p className="mb-5 text-xs text-zinc-500">NAVIGATION</p>
                   <span className="inline-block h-[0.6px] w-full bg-zinc-700"></span>
-                  <motion.div className="nav-items mt-8 flex flex-col gap-4">
-                    {/* <div
-                      onMouseEnter={() => handleHover("Home")}
-                      onMouseLeave={() => handleHover(null)}
-                      className="elem relative h-[3.4vw] overflow-hidden"
-                    >
-                      <motion.a
-                        href="#"
-                        className="one block h-[3.4vw] text-[3.5vw] leading-none text-white"
-                        initial={{ y: 0 }}
-                        animate={{ y: hoveredElement === "Home" ? "-100%" : 0 }}
-                        transition={{
-                          duration: 0.5,
-                          ease: [0.175, 0.885, 0.32, 1.275],
-                        }}
-                      >
-                        Home
-                      </motion.a>
-                      <motion.a
-                        href="#"
-                        className="two block -translate-y-10 text-[3.5vw] leading-none text-white "
-                        initial={{ y: 0 }}
-                        animate={{ y: hoveredElement === "Home" ? "-100%" : 0 }}
-                        transition={{
-                          duration: 0.5,
-                          ease: [0.175, 0.885, 0.32, 1.275],
-                        }}
-                      >
-                        Home
-                      </motion.a>
-                    </div> */}
+                  <motion.div className="nav-items mt-8 flex flex-col gap-4 ">
                     <Double_hover
                       text="Home"
                       hoveredElement={hoveredElement}
@@ -197,8 +167,8 @@ const Navbar = () => {
                     />
                   </motion.div>
                   <div className="nav-socials-contaier mt-36 cursor-pointer">
-                    <p className="text-xs uppercase text-zinc-500">socials</p>
-                    <div className="nav-socials mt-4 flex gap-5">
+                    <p className="text-xs uppercase text-zinc-500 ">socials</p>
+                    <div className="nav-socials mt-4 flex h-[4vw] gap-5 overflow-hidden md:h-[1.2vw]">
                       <Double_hover
                         text="Instaram"
                         textSize="sm"
